@@ -12,7 +12,7 @@ All Rights Reserved 2018.
 #include "ball_query_gpu.h"
 
 #define CHECK_CUDA(x) do { \
-	  if (!x.type().is_cuda()) { \
+	  if (!(x).is_cuda()) { \
 		      fprintf(stderr, "%s must be CUDA tensor at %s:%d\n", #x, __FILE__, __LINE__); \
 		      exit(-1); \
 		    } \
@@ -30,9 +30,9 @@ int ball_query_wrapper_fast(int b, int n, int m, float radius, int nsample,
     at::Tensor new_xyz_tensor, at::Tensor xyz_tensor, at::Tensor idx_tensor) {
     CHECK_INPUT(new_xyz_tensor);
     CHECK_INPUT(xyz_tensor);
-    const float *new_xyz = new_xyz_tensor.data<float>();
-    const float *xyz = xyz_tensor.data<float>();
-    int *idx = idx_tensor.data<int>();
+    const float *new_xyz = new_xyz_tensor.data_ptr<float>();
+    const float *xyz = xyz_tensor.data_ptr<float>();
+    int *idx = idx_tensor.data_ptr<int>();
     
     ball_query_kernel_launcher_fast(b, n, m, radius, nsample, new_xyz, xyz, idx);
     return 1;
