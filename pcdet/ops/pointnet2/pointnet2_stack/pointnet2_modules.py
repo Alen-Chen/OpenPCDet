@@ -76,7 +76,7 @@ class StackSAModuleMSG(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
     def forward(self, xyz, xyz_batch_cnt, new_xyz, new_xyz_batch_cnt, features=None, empty_voxel_set_zeros=True):
-        """
+        r"""
         :param xyz: (N1 + N2 ..., 3) tensor of the xyz coordinates of the features
         :param xyz_batch_cnt: (batch_size), [N1, N2, ...]
         :param new_xyz: (M1 + M2 ..., 3)
@@ -381,7 +381,7 @@ class VectorPoolAggregationModule(nn.Module):
         return voxel_features
 
     def forward(self, xyz, xyz_batch_cnt, new_xyz, new_xyz_batch_cnt, features, **kwargs):
-        """
+        r"""
         :param xyz: (N1 + N2 ..., 3) tensor of the xyz coordinates of the features
         :param xyz_batch_cnt: (batch_size), [N1, N2, ...]
         :param new_xyz: (M1 + M2 ..., 3)

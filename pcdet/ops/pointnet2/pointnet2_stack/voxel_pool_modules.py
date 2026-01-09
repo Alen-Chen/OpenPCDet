@@ -69,7 +69,7 @@ class NeighborVoxelSAModuleMSG(nn.Module):
 
     def forward(self, xyz, xyz_batch_cnt, new_xyz, new_xyz_batch_cnt, \
                                         new_coords, features, voxel2point_indices):
-        """
+        r"""
         :param xyz: (N1 + N2 ..., 3) tensor of the xyz coordinates of the features
         :param xyz_batch_cnt: (batch_size), [N1, N2, ...]
         :param new_xyz: (M1 + M2 ..., 3)
